@@ -1,0 +1,12 @@
+services:
+  copy-machine:
+    build:
+    # build from Dockerfile
+      dockerfile: Dockerfile
+    volumes:
+      - /mnt/disks/persistent-disk-jeroen:/data
+      - /home/jeroen.vranken/secrets/:/secrets
+    env_file: .env
+    environment:
+      # Pass bucket name from the .env file
+      BUCKET_NAME: ${BUCKET_NAME}
